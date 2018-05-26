@@ -36,7 +36,7 @@ class TimeCapture extends Component {
             'type': evt.target.value
          });
     }
-    // submitTime = () => {}
+
 
     submitData = (evt) => {
         let storedTime = []
@@ -54,7 +54,7 @@ class TimeCapture extends Component {
             "date": this.state.date,
             "time": this.state.time,
             "type": this.state.type,
-            'dateCreated': new Date
+            'dateCreated': new Date()
         }
         
         storedTime.push(newTime);

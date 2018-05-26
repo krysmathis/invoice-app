@@ -4,6 +4,7 @@ import './App.css';
 import * as firebase from "firebase";
 import moment from 'moment';
 import TimeCapture from './TimeCapture';
+import TimeList from './TimeList';
 
 var config = {
   apiKey: "AIzaSyB3jCSNMTCKVEOdKfjHol-f1JZaynN80u8",
@@ -34,6 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <TimeCapture />
+        <TimeList />
       </div>
     );
   }
