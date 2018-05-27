@@ -19,23 +19,50 @@ var config = {
 // const database = firebase.database();
 
 class App extends Component {
+      
+  constructor(props) {
+    super(props)
+    this.state = {
+        storedTime: [],
+    };
+        
+  }
 
-  // Send data up to the database
-  // handlePost(date, time, type) {
-  //   const ref = database.ref('/timer/');
-  //   ref.push({
-  //     "name": name,
-  //     "limit": time
-  //   });
-  //   // clear the input form
-  //   //this.clearForm();
-  // }
+  componentWillMount() {
+      try {
+        let storedObj = JSON.parse(localStorage.getItem("workTime"));
+        if (storedObj != null) {
+            this.setState({storedTime: (storedObj)});
+        }
+    } catch (err) { 
 
+    }
+  }
+
+  addTime = (newTime) => {
+
+    let storedTimes = []
+
+        try {
+            let storedObj = JSON.parse(localStorage.getItem("workTime"));
+            if (storedObj != null) {
+                storedTimes = (storedObj);
+            }
+        } catch (err) {
+
+        }
+        
+        storedTimes.push(newTime);
+
+        localStorage.setItem("workTime",JSON.stringify(storedTimes));
+        this.setState({storedTime: storedTimes})
+  }
+  
   render() {
     return (
       <div className="App">
-        <TimeCapture />
-        <TimeList />
+        <TimeCapture submit={this.addTime}/>
+        <TimeList times={this.state.storedTime}/>
       </div>
     );
   }

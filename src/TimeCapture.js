@@ -39,16 +39,6 @@ class TimeCapture extends Component {
 
 
     submitData = (evt) => {
-        let storedTime = []
-
-        try {
-            let storedObj = JSON.parse(localStorage.getItem("workTime"));
-            if (storedObj != null) {
-                storedTime = (storedObj);
-            }
-        } catch (err) {
-
-        }
 
         const newTime = {
             "date": this.state.date,
@@ -56,10 +46,7 @@ class TimeCapture extends Component {
             "type": this.state.type,
             'dateCreated': new Date()
         }
-        
-        storedTime.push(newTime);
-
-        localStorage.setItem("workTime",JSON.stringify(storedTime));
+        this.props.submit(newTime)
     }
 
 
