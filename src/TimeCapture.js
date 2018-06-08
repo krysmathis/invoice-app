@@ -55,20 +55,23 @@ class TimeCapture extends Component {
 
         let today = moment().format("YYYY-MM-DD");
         const now = moment().format("H:mm");
+        
+        var weekEnding = moment().endOf('week').subtract(1,'day').toDate();
+        console.log('start + 6: ',weekEnding)
 
         return(
-            <div class="time-entry">
+            <div className="time-entry">
                 <div>Enter Date</div>
-                <input class="time-entry__date" type="date" defaultValue={today} onChange={this.updateDate}/>
+                <input className="time-entry__date" type="date" defaultValue={today} onChange={this.updateDate}/>
                 <div>Enter Time</div>
-                <input class="time-entry__time" defaultValue={now} onChange={this.updateTime} type="time"/>
+                <input className="time-entry__time" defaultValue={now} onChange={this.updateTime} type="time"/>
                 <div>Enter Type</div>
-                <select class="time-entry__type" onChange={this.updateType}>
+                <select className="time-entry__type" onChange={this.updateType}>
                     <option>start</option>
                     <option>stop</option>
                 </select>
-                <div class="time-entry__submit">
-                <button onClick={this.submitData} class="time-entry__btn">Submit</button>
+                <div className="time-entry__submit">
+                <button onClick={this.submitData} className="time-entry__btn">Submit</button>
                 </div>
             </div>
         ) 
