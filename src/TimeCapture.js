@@ -40,10 +40,15 @@ class TimeCapture extends Component {
 
     submitData = (evt) => {
 
+        var weekEnding = moment().endOf('week').subtract(1,'day').startOf('day');
+        console.log('start + 6: ',weekEnding)
+
         const newTime = {
+            "weekending": weekEnding,
             "date": this.state.date,
             "time": this.state.time,
             "type": this.state.type,
+            "invoiceNumber": null,
             'dateCreated': new Date()
         }
         this.props.submit(newTime)
@@ -56,9 +61,7 @@ class TimeCapture extends Component {
         let today = moment().format("YYYY-MM-DD");
         const now = moment().format("H:mm");
         
-        var weekEnding = moment().endOf('week').subtract(1,'day').toDate();
-        console.log('start + 6: ',weekEnding)
-
+        
         return(
             <div className="time-entry">
                 <div>Enter Date</div>
