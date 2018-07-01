@@ -40,11 +40,10 @@ class TimeCapture extends Component {
 
     submitData = (evt) => {
 
-        var weekEnding = moment().endOf('week').subtract(1,'day').startOf('day');
-        console.log('start + 6: ',weekEnding)
+        let weekEnding = moment(this.state.date).endOf('week').subtract(1,'day').startOf('day').format("YYYY-MM-DD");
 
-        const newTime = {
-            "weekending": weekEnding,
+        let newTime = {
+            "weekEnding": weekEnding,
             "date": this.state.date,
             "time": this.state.time,
             "type": this.state.type,
